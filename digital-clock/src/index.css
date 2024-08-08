@@ -1,0 +1,49 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #1f1f1f;
+  --font-color: #ffffff;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.clock-container {
+  min-width: 100vw;
+}
+
+.clock {
+  color: var(--font-color);
+  text-align: center;
+  font-size: 15rem;
+}
+
+.merediem {
+  color: var(--font-color);
+  text-align: center;
+  font-size: 5rem;
+  padding-left: 2rem;
+}
+
+.icon {
+  color: var(--font-color);
+  font-size: 2rem;
+}
+
+.mode {
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+}
