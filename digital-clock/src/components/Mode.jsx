@@ -1,27 +1,30 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
-import { useState } from "react";
+import PropTypes from "prop-types";
+import { useEffect } from "react";
 
-function Mode() {
-  const [mode, setMode] = useState(true);
-
-  const handleClick = () => {
-    setMode(!mode);
-  };
+function Mode({ toggleDarkMode, isDarkMode }) {
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", isDarkMode);
+    document.body.classList.toggle("light-mode", !isDarkMode);
+  }, [isDarkMode]);
 
   return (
     <div className="mode-container">
-      <div>
-        <div onClick={handleClick} className="mode">
-          {mode ? (
-            <FontAwesomeIcon icon={faSun} className="icon" />
-          ) : (
-            <FontAwesomeIcon icon={faMoon} className="icon" />
-          )}
-        </div>
+      <div onClick={toggleDarkMode} className="mode">
+        <FontAwesomeIcon
+          icon={isDarkMode ? faMoon : faSun}
+          className={`${isDarkMode ? "dark" : "light"} icon`}
+        />
       </div>
     </div>
   );
 }
+
+Mode.propTypes = {
+  toggleDarkMode: PropTypes.func.isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
+};
+
 export default Mode;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
-function Clock() {
+function Clock({ isDarkMode }) {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -32,13 +33,20 @@ function Clock() {
 
   return (
     <div className="clock-container">
-      <div className="clock">
+      <div className={`${isDarkMode ? "dark" : "light"} clock`}>
         <p>
           {displayTime()}
-          <span className="merediem">{merediem()}</span>
+          <span className={`${isDarkMode ? "dark" : "light"} merediem`}>
+            {merediem()}
+          </span>
         </p>
       </div>
     </div>
   );
 }
+
+Clock.propTypes = {
+  isDarkMode: PropTypes.bool.isRequired,
+};
+
 export default Clock;

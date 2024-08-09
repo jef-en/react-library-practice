@@ -7,8 +7,9 @@
 }
 
 :root {
-  --bg-color: #1f1f1f;
-  --font-color: #ffffff;
+  --bg-semi-black: #1f1f1f;
+  --bg-white: #ffffff;
+  --bg-black: #000000;
 }
 
 body {
@@ -17,7 +18,15 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: var(--bg-color);
+}
+
+body.light-mode {
+  background-color: var(--bg-semi-black);
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: var(--bg-white);
 }
 
 .clock-container {
@@ -25,21 +34,28 @@ body {
 }
 
 .clock {
-  color: var(--font-color);
   text-align: center;
   font-size: 15rem;
 }
 
 .merediem {
-  color: var(--font-color);
+  color: var(--bg-white);
   text-align: center;
   font-size: 5rem;
   padding-left: 2rem;
 }
 
 .icon {
-  color: var(--font-color);
+  color: var(--bg-white);
   font-size: 2rem;
+}
+
+.light {
+  color: var(--bg-white);
+}
+
+.dark {
+  color: var(--bg-black);
 }
 
 .mode {
