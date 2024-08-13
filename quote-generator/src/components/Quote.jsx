@@ -1,19 +1,45 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXTwitter, faFacebookF } from "@fortawesome/free-brands-svg-icons";
-import { useState } from "react";
-import quotes from "../assets/quotes";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 function Quote({ isDarkMode }) {
-  const [newQuotes, setNewQuotes] = useState({
-    text: "Random Quotes Generator",
+  const [quotes, setQuotes] = useState([]);
+  const [newQuote, setNewQuote] = useState({
+    text: "Quote Generator",
     author: "",
   });
 
+  useEffect(() => {
+    const fetchQuotes = async () => {
+      try {
+        const result = await fetch("https://type.fit/api/quotes");
+        const data = await result.json();
+        const cleanedData = data.map((quote) => ({
+          text: quote.text,
+          author: cleanAuthor(quote.author),
+        }));
+        setQuotes(cleanedData);
+      } catch (error) {
+        console.error(error);
+        return;
+      }
+    };
+    fetchQuotes();
+  }, []);
+
+  const cleanAuthor = (author) => {
+    if (!author || author.trim() === "" || author.trim() === "type.fit") {
+      return "Unknown";
+    }
+    return author.split(",")[0].trim();
+  };
+
   const handleClick = () => {
+    if (quotes.length === 0) return;
     const randomIndex = Math.floor(Math.random() * quotes.length);
-    const randomQuotes = quotes[randomIndex];
-    setNewQuotes(randomQuotes);
+    const randomQuote = quotes[randomIndex];
+    setNewQuote(randomQuote);
   };
 
   return (
@@ -22,8 +48,8 @@ function Quote({ isDarkMode }) {
         id="quote-textbox"
         className={isDarkMode ? "quotesDark" : "quotesLight"}
       >
-        <p id="text">{newQuotes.text}</p>
-        <p id="author">{newQuotes.author}</p>
+        <p id="text">{newQuote.text}</p>
+        <p id="author">{newQuote.author}</p>
         <div id="button-container">
           <div id="socials">
             <a
