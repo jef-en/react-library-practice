@@ -8,7 +8,16 @@ function ToDoList() {
   const [newTasks, setNewTasks] = useState([]);
 
   const handleAdd = () => {
-    setNewTasks((prevNewTasks) => [...prevNewTasks, tasks]);
+    // Generate a random color for the new task
+    const colorValue = ["#ffc09f", "#ffee93", "#fcf5c7", "#a0ced9", "#adf7b6"];
+    const randomIndex = Math.floor(Math.random() * colorValue.length);
+    const randomColor = colorValue[randomIndex];
+
+    // Add the new task with a random background color
+    setNewTasks((prevNewTasks) => [
+      ...prevNewTasks,
+      { ...tasks, color: randomColor },
+    ]);
     setTasks({ title: "", body: "" });
   };
 
@@ -29,6 +38,7 @@ function ToDoList() {
         name="title"
         value={tasks.title}
         onChange={handleChange}
+        className="form-fields"
       />
       <input
         type="text"
@@ -36,17 +46,26 @@ function ToDoList() {
         name="body"
         value={tasks.body}
         onChange={handleChange}
+        className="form-fields"
       />
-      <button onClick={handleAdd}>Add</button>
+      <button onClick={handleAdd} className="button">
+        Add
+      </button>
       <ol>
-        {newTasks.map((tasks, index) => (
+        {newTasks.map((task, index) => (
           <li key={index}>
-            {tasks.title}
-            {tasks.body}
+            <div
+              className="task-container"
+              style={{ backgroundColor: task.color }}
+            >
+              <p className="title">{task.title}</p>
+              {task.body}
+            </div>
           </li>
         ))}
       </ol>
     </div>
   );
 }
+
 export default ToDoList;
