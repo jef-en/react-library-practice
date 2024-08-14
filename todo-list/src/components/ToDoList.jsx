@@ -21,8 +21,8 @@ function ToDoList() {
   };
 
   return (
-    <div>
-      <h1>To Do List</h1>
+    <div className="main-container">
+      <h1 className="title">To Do List</h1>
       <input
         type="text"
         placeholder="Enter title"
@@ -41,7 +41,8 @@ function ToDoList() {
       <ol>
         {newTasks.map((tasks, index) => (
           <li key={index}>
-            {tasks.title}: {tasks.body}
+            {tasks.title}
+            {tasks.body}
           </li>
         ))}
       </ol>
