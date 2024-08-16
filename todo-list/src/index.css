@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-black: #1f1f1f;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--clr-black);
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#task-container {
+  outline: 1px solid red;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(5, 100px);
+  gap: 10rem;
+  min-width: 100%;
+}
+
+.task {
+  outline: 1px solid red;
+  width: 15rem;
+  height: 20rem;
+}
