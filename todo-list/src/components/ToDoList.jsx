@@ -60,11 +60,11 @@ function ToDoList() {
 
   return (
     <div id="main-container">
-      <div>
-        <h1>Task Manager</h1>
+      <div id="nav-container">
+        <h1 id="title">Task Manager</h1>
         <input
           type="text"
-          placeholder="Add title"
+          placeholder="Add your title"
           name="title"
           value={newTask.title}
           onChange={handleChange}
@@ -76,24 +76,26 @@ function ToDoList() {
           value={newTask.content}
           onChange={handleChange}
         />
-        <button onClick={handleAdd}>Add Task</button>
+        <button onClick={handleAdd}>Add Another Task</button>
       </div>
 
       <div id="task-container">
         {task.map((value) => (
           <div
-            className="task"
+            id="task"
             key={value.id}
             style={{
               textDecoration: value.isComplete ? "line-through" : "none",
             }}
           >
-            <h2>{value.title}</h2>
+            <h3>{value.title}</h3>
             <p>{value.content}</p>
-            <button onClick={() => handleComplete(value.id)}>
-              {value.isComplete ? "Not Done" : "Done"}
-            </button>
-            <button onClick={() => handleDelete(value.id)}>Delete</button>
+            <div id="buttons">
+              <button onClick={() => handleComplete(value.id)}>
+                {value.isComplete ? "Not Done" : "Done"}
+              </button>
+              <button onClick={() => handleDelete(value.id)}>Delete</button>
+            </div>
           </div>
         ))}
       </div>

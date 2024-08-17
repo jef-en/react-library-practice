@@ -8,6 +8,7 @@
 
 :root {
   --clr-black: #1f1f1f;
+  --clr-white: #ffffff;
 }
 
 body {
@@ -16,23 +17,33 @@ body {
 }
 
 #main-container {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 
-#task-container {
-  outline: 1px solid red;
-  display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(5, 100px);
-  gap: 10rem;
-  min-width: 100%;
+/* Left Panel */
+#nav-container {
+  background-color: yellow;
+  width: 20%;
+  position: sticky;
+  position: -webkit-sticky;
+  height: 100vh;
 }
 
-.task {
-  outline: 1px solid red;
-  width: 15rem;
+/* Right Panel */
+#task-container {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  grid-template-rows: repeat(5, 2fr);
+  gap: 2rem;
+  width: 80%;
+  margin: 2rem;
+}
+
+#task {
   height: 20rem;
+  width: 15rem;
+  background-color: var(--clr-white);
+  border-radius: 10px;
 }
