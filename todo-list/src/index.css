@@ -8,7 +8,9 @@
 
 :root {
   --clr-black: #1f1f1f;
+  --clr-gray: #2c2c2c;
   --clr-white: #ffffff;
+  --clr-dwhite: #b7b7b7;
 }
 
 body {
@@ -18,32 +20,98 @@ body {
 
 #main-container {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-}
-
-/* Left Panel */
-#nav-container {
-  background-color: yellow;
-  width: 20%;
-  position: sticky;
-  position: -webkit-sticky;
-  height: 100vh;
-}
-
-/* Right Panel */
-#task-container {
   display: grid;
-  grid-template-columns: repeat(4, 2fr);
-  grid-template-rows: repeat(5, 2fr);
-  gap: 2rem;
-  width: 80%;
-  margin: 2rem;
+  grid-template-columns: 30% 1fr;
+  grid-template-rows: 30% 1fr;
 }
 
+#main-container {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  grid-template-rows: 15% 1fr;
+  height: 100vh;
+  width: 100vw;
+}
+
+#nav-container {
+  grid-row: 1 / span 2;
+  grid-column: 1;
+  /* outline: 1px solid red; */
+}
+
+#productivity-container {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5rem 0 2rem;
+}
+
+#task-container {
+  padding: 2rem 4rem;
+  /* 
+  margin-left: 1rem; */
+  grid-row: 2;
+  grid-column: 2;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1rem;
+  border: 1px solid red;
+}
+
+/* Task  */
 #task {
-  height: 20rem;
+  min-height: 17rem;
   width: 15rem;
-  background-color: var(--clr-white);
+  background-color: var(--clr-gray);
+  color: var(--clr-white);
   border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.task-title {
+  margin-bottom: 0.2rem;
+}
+
+.line {
+  width: 100%;
+}
+
+.task-content {
+  margin: 0.5rem 0;
+  color: white;
+  font-size: 13px;
+}
+
+#buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-bottom: 0.2rem;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--clr-white);
+  border: none;
+  box-shadow: 0px 5px var(--clr-dwhite);
+  font-weight: 600;
+  transition: all ease-in-out 0.1s;
+}
+
+.btn:active {
+  box-shadow: 0px 2px var(--clr-dwhite);
+  transform: translateY(3px);
 }
