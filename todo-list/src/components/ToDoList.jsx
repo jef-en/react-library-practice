@@ -70,56 +70,66 @@ function ToDoList() {
         <h1 id="title">Task Manager</h1>
         <input
           type="text"
-          placeholder="Add your title"
+          placeholder="Add your title here!"
           name="title"
           value={newTask.title}
           onChange={handleChange}
+          className="fields field-title"
         />
-        <input
+        <textarea
           type="text"
-          placeholder="Add your content"
+          placeholder="Add your content here!"
           name="content"
           value={newTask.content}
           onChange={handleChange}
+          className="fields field-content"
         />
         <button onClick={handleAdd} className="btn b">
           Add Another Task
         </button>
       </div>
-      <div id="productivity-container">
-        <h1>dark mode </h1>
-        <h1>Time</h1>
-      </div>
+      <div id="productivity-container"></div>
       <div id="task-container">
-        {task.map((value) => (
-          <div id="task" key={value.id}>
-            <h3
-              className="task-title"
+        <div className="container">
+          {task.map((value) => (
+            <div
+              id="task"
+              key={value.id}
               style={{
-                textDecoration: value.isComplete ? "line-through" : "none",
+                backgroundColor: value.isComplete ? "#55c355" : "",
               }}
             >
-              {value.title}
-            </h3>
-            <hr className="line" />
-            <p
-              className="task-content"
-              style={{
-                textDecoration: value.isComplete ? "line-through" : "none",
-              }}
-            >
-              {value.content}
-            </p>
-            <div id="buttons">
-              <button onClick={() => handleComplete(value.id)} className="btn">
-                {value.isComplete ? "Not Done" : "Done"}
-              </button>
-              <button onClick={() => handleDelete(value.id)} className="btn">
-                Delete
-              </button>
+              <h3
+                className="task-title"
+                style={{
+                  textDecoration: value.isComplete ? "line-through" : "none",
+                }}
+              >
+                {value.title}
+              </h3>
+              <hr className="line" />
+              <p
+                className="task-content"
+                style={{
+                  textDecoration: value.isComplete ? "line-through" : "none",
+                }}
+              >
+                {value.content}
+              </p>
+              <div id="buttons">
+                <button
+                  onClick={() => handleComplete(value.id)}
+                  className="btn"
+                >
+                  {value.isComplete ? "Not Done" : "Done"}
+                </button>
+                <button onClick={() => handleDelete(value.id)} className="btn">
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

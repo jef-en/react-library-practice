@@ -16,19 +16,13 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--clr-black);
-}
-
-#main-container {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  grid-template-rows: 30% 1fr;
+  color: var(--clr-white);
 }
 
 #main-container {
   display: grid;
   grid-template-columns: 20% 1fr;
-  grid-template-rows: 15% 1fr;
+  grid-template-rows: 10% 1fr;
   height: 100vh;
   width: 100vw;
 }
@@ -36,37 +30,73 @@ body {
 #nav-container {
   grid-row: 1 / span 2;
   grid-column: 1;
-  /* outline: 1px solid red; */
+  margin: 1rem 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+#title {
+  margin-bottom: 1.5rem;
+}
+
+.fields {
+  padding: 0.5rem 1rem;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.field-title,
+.field-content {
+  background-color: var(--clr-gray);
+  color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--clr-dwhite);
+}
+
+textarea {
+  min-height: 10rem;
+  resize: none;
 }
 
 #productivity-container {
+  margin: 1rem;
+  padding: 2rem 4rem;
   grid-row: 1;
   grid-column: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 5rem 0 2rem;
+  background-color: var(--clr-gray);
+  border-radius: 20px;
 }
 
 #task-container {
-  padding: 2rem 4rem;
-  /* 
-  margin-left: 1rem; */
+  padding: 2rem;
+  margin: 1rem;
   grid-row: 2;
   grid-column: 2;
-  overflow-y: auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 1rem;
-  border: 1px solid red;
+  overflow: auto;
+  background-color: var(--clr-gray);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Task  */
 #task {
   min-height: 17rem;
   width: 15rem;
-  background-color: var(--clr-gray);
+  background-color: var(--clr-black);
   color: var(--clr-white);
   border-radius: 10px;
   padding: 1rem;
@@ -83,6 +113,7 @@ body {
 
 .line {
   width: 100%;
+  margin: 0.1rem;
 }
 
 .task-content {
@@ -111,7 +142,43 @@ body {
   transition: all ease-in-out 0.1s;
 }
 
+.btn:hover {
+  cursor: pointer;
+}
+
 .btn:active {
   box-shadow: 0px 2px var(--clr-dwhite);
   transform: translateY(3px);
+}
+
+.b {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 3rem;
+  border-radius: 15px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: repeat(4, 1fr); This will mess up your scrollbar*/
+  gap: 1.5rem;
+}
+
+#task-container::-webkit-scrollbar {
+  width: 20px;
+}
+
+#task-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+#task-container::-webkit-scrollbar-thumb {
+  background-color: var(--clr-dwhite);
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+#task-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--clr-white);
 }
