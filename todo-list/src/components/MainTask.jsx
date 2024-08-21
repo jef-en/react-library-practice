@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function MainTask({ task, handleComplete, handleDelete }) {
   return (
     <div id="task-container">
-      <div className="container">
+      <div id="container">
         {task.map((value) => (
           <div
             id="task"
@@ -19,7 +19,7 @@ function MainTask({ task, handleComplete, handleDelete }) {
               }}
             >
               {value.title}
-              <button>Edit</button>
+              {/* <button>Edit</button> */}
             </h3>
             <hr className="line" />
             <p
