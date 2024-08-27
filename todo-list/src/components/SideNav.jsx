@@ -2,9 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListCheck } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 
-function SideNav({ title, content, handleChange, handleAdd }) {
+function SideNav({ title, content, handleChange, handleAdd, name }) {
   return (
-    <div id="nav-container">
+    <div id="nav-container" className={name}>
       <h1 id="title">
         <span>
           <FontAwesomeIcon icon={faListCheck} />
@@ -30,8 +30,6 @@ function SideNav({ title, content, handleChange, handleAdd }) {
       <button onClick={handleAdd} className="btn b">
         Add Another Task
       </button>
-      {/* <button className="btn b">Completed</button>
-      <button className="btn b">Deleted </button> */}
     </div>
   );
 }
@@ -42,6 +40,7 @@ SideNav.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleAdd: PropTypes.func.isRequired,
   isDarkMode: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default SideNav;

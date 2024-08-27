@@ -19,6 +19,12 @@ function App() {
   });
   const [time, setTime] = useState(new Date());
 
+  const [isNavVisible, setIsNavVisible] = useState(false);
+  const toggleNav = () => {
+    setIsNavVisible(!isNavVisible);
+    console.log(isNavVisible);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(new Date());
@@ -34,11 +40,13 @@ function App() {
         content={newTask.content}
         handleChange={(event) => handleChange(event, newTask, setNewTask)}
         handleAdd={() => handleAdd(newTask, task, setTask, setNewTask)}
+        name={isNavVisible ? "show" : ""}
       />
       <Header
         time={displayTime(time)}
         meridiem={meridiem(time)}
         date={date(time)}
+        handleNav={toggleNav}
       />
       <MainTask
         task={task}
