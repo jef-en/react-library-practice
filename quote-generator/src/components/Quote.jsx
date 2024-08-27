@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXTwitter, faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { useEffect, useState } from "react";
+import quoteList from "../assets/quotes.jsx";
 import PropTypes from "prop-types";
 
 function Quote({ isDarkMode }) {
@@ -11,29 +12,34 @@ function Quote({ isDarkMode }) {
   });
 
   useEffect(() => {
-    const fetchQuotes = async () => {
-      try {
-        const result = await fetch("https://type.fit/api/quotes");
-        const data = await result.json();
-        const cleanedData = data.map((quote) => ({
-          text: quote.text,
-          author: cleanAuthor(quote.author),
-        }));
-        setQuotes(cleanedData);
-      } catch (error) {
-        console.error(error);
-        return;
-      }
-    };
-    fetchQuotes();
+    setQuotes(quoteList);
   }, []);
 
-  const cleanAuthor = (author) => {
-    if (!author || author.trim() === "" || author.trim() === "type.fit") {
-      return "Unknown";
-    }
-    return author.split(",")[0].trim();
-  };
+  // useEffect(() => {
+  //   const fetchQuotes = async () => {
+  //     try {
+  //       const result = await fetch("https://api.quotable.io");
+  //       const data = await result.json();
+  //       const cleanedData = data.map((quote) => ({
+  //         text: quote.text,
+  //         author: cleanAuthor(quote.author),
+  //       }));
+  //       setQuotes(cleanedData);
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //       return;
+  //     }
+  //   };
+  //   fetchQuotes();
+  // }, []);
+
+  // const cleanAuthor = (author) => {
+  //   if (!author || author.trim() === "" || author.trim() === "type.fit") {
+  //     return "Unknown";
+  //   }
+  //   return author.split(",")[0].trim();
+  // };
 
   const handleClick = () => {
     if (quotes.length === 0) return;
