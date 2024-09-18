@@ -34,9 +34,9 @@ function Timer() {
     setIsRunning(false);
   };
 
-  const handleAdd = () => {
-    setTimeLeft((prevTime) => prevTime + 5 * 60);
-  };
+  // const handleAdd = () => {
+  //   setTimeLeft((prevTime) => prevTime + 5 * 60);
+  // };
 
   const formatTime = () => {
     const minutes = Math.floor(timeLeft / 60);
